@@ -1,37 +1,32 @@
 {
-  "weight": {
-    "date": "2020-09-30",
-    "target": 210,
-    "mode": "target"
-  },
-  "miles": {
-    "date": "2020-09-30",
-    "target": 200,
-    "mode": "sum"
-  },
-  "situps": {
-    "date": "2020-09-30",
-    "target": 1200,
-    "mode": "sum"
-  },
-  "pushups": {
-    "date": "2020-09-30",
-    "target": 1200,
-    "mode": "sum"
-  },
-  "press": {
-    "date": "2020-09-30",
-    "target": 60000,
-    "mode": "sum"
-  },
-  "curl": {
-    "date": "2020-09-30",
-    "target": 42000,
-    "mode": "sum"
-  },
-  "shoulder_press": {
-    "date": "2020-09-30",
-    "target": 42000,
-    "mode": "sum"
+  "2020-10-01": {
+    "weight": {
+      "target": 210,
+      "mode": "target"
+    },
+    "miles": {
+      "target": 200,
+      "mode": "sum"
+    },
+    "situps": {
+      "target": 1200,
+      "mode": "sum"
+    },
+    "pushups": {
+      "target": 1200,
+      "mode": "sum"
+    },
+    "press": {
+      "target": 60000,
+      "mode": "sum"
+    },
+    "curl": {
+      "target": 42000,
+      "mode": "sum"
+    },
+    "shoulder_press": {
+      "target": 42000,
+      "mode": "sum"
+    }
   }
 }

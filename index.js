@@ -14,52 +14,60 @@ function formatDate() {
   return [year, month, day].join('-')
 }
 
-let student = {
-  name: 'Mike',
-  age: 23,
-  gender: 'Male',
-  department: 'English',
-  car: 'Honda',
-}
-
 const activity = process.argv[2]
-const value = process.argv[3]
+const value = parseFloat(eval(process.argv[3]))
 
-const keys = Object.keys(targets)
-if (!keys.includes(activity)) {
-  console.log(`${activity} is not a defined activity `)
-  console.log(keys)
-  process.exit()
-} else {
-  console.log(Object.keys(targets))
+const Dates = Object.keys(targets)
+Dates.forEach((date) => {
+  if (new Date(date) - new Date() > 0) {
+    const keys = Object.keys(targets[date])
+    if (!keys.includes(activity)) {
+      console.log(`${activity} is not a defined for target ${date} `)
+      console.log(keys)
+    } else {
+      tracker[date] = tracker[date] || {}
+      tracker[date] = {
+        ...tracker[date],
+        [activity]: {
+          ...targets[date][activity],
+          items: [],
+          ...tracker[date][activity],
+        },
+      }
+      tracker[date][activity].items.push({
+        value,
+        date: formatDate(),
+      })
+      switch (targets[date][activity].mode) {
+        case 'target':
+          tracker[date][activity].current =
+            tracker[date][activity].items[
+              tracker[date][activity].items.length - 1
+            ].value
 
-  tracker[activity] = {
-    ...targets[activity],
-    items: [],
-    ...tracker[activity],
-  }
-  tracker[activity].items.push({
-    value,
-    date: formatDate(),
-  })
-  switch (tracker[activity].mode) {
-    case 'target':
-      tracker[activity].current =
-        tracker[activity].items[tracker[activity].items.length - 1].value
+          break
+        default:
+          tracker[date][activity].current = tracker[date][
+            activity
+          ].items.reduce((sum, v) => sum + parseFloat(v.value), 0)
+          break
+      }
 
-      break
-    default:
-      tracker[activity].current = tracker[activity].items.reduce(
-        (sum, v) => sum + parseFloat(v.value),
-        0
+      tracker[date][activity].remaining =
+        Math.round(
+          100 *
+            (tracker[date][activity].target - tracker[date][activity].current)
+        ) / 100
+
+      let data = JSON.stringify(tracker)
+      fs.writeFileSync('tracker.json', data)
+      console.log(
+        activity,
+        'current: ',
+        tracker[date][activity].current,
+        ' remaining: ',
+        tracker[date][activity].remaining
       )
-      break
+    }
   }
-
-  tracker[activity].remaining =
-    tracker[activity].target - tracker[activity].current
-
-  let data = JSON.stringify(tracker)
-  fs.writeFileSync('tracker.json', data)
-  console.log(data)
-}
+})
