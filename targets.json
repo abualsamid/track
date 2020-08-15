@@ -1,0 +1,37 @@
+{
+  "weight": {
+    "date": "2020-09-30",
+    "target": 210,
+    "mode": "target"
+  },
+  "miles": {
+    "date": "2020-09-30",
+    "target": 200,
+    "mode": "sum"
+  },
+  "situps": {
+    "date": "2020-09-30",
+    "target": 1200,
+    "mode": "sum"
+  },
+  "pushups": {
+    "date": "2020-09-30",
+    "target": 1200,
+    "mode": "sum"
+  },
+  "press": {
+    "date": "2020-09-30",
+    "target": 60000,
+    "mode": "sum"
+  },
+  "curl": {
+    "date": "2020-09-30",
+    "target": 42000,
+    "mode": "sum"
+  },
+  "shoulder_press": {
+    "date": "2020-09-30",
+    "target": 42000,
+    "mode": "sum"
+  }
+}

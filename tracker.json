@@ -1,0 +1,29 @@
+{
+  "press": {
+    "date": "2020-09-30",
+    "target": 60000,
+    "mode": "sum",
+    "items": [
+      { "value": "5", "date": "2020-08-14" },
+      { "value": "15", "date": "2020-08-14" }
+    ],
+    "current": 20,
+    "remaining": 59980
+  },
+  "weight": {
+    "date": "2020-09-30",
+    "target": 210,
+    "mode": "target",
+    "items": [{ "value": "219", "date": "2020-08-14" }],
+    "current": "219",
+    "remaining": -9
+  },
+  "miles": {
+    "date": "2020-09-30",
+    "target": 200,
+    "mode": "sum",
+    "items": [{ "value": "15", "date": "2020-08-14" }],
+    "current": 15,
+    "remaining": 185
+  }
+}
