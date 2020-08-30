@@ -24,8 +24,12 @@
       "target": 42000,
       "mode": "sum"
     },
-    "shoulder_press": {
+    "shoulders": {
       "target": 42000,
+      "mode": "sum"
+    },
+    "lats": {
+      "target": 60000,
       "mode": "sum"
     }
   }
