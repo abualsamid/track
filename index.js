@@ -29,7 +29,7 @@ const week = (date, start = '2020-08-15') => {
   }
 }
 const displayStatus = (date) => {
-  Object.keys(tracker[date]).forEach((a) => {
+  Object.keys(tracker[date] || {}).forEach((a) => {
     const { target, current, remaining, percentComplete, weeks } = tracker[
       date
     ][a]
@@ -41,6 +41,7 @@ const displayStatus = (date) => {
       )
     )
   })
+  console.log(JSON.stringify({max: tracker["max"]}, null, 2))
 }
 const addEntry = (date, activity, value) => {
   const keys = Object.keys(targets[date])
@@ -71,6 +72,13 @@ const addEntry = (date, activity, value) => {
             tracker[date][activity].items.length - 1
           ].value
         tracker[date][activity].weeks[week(today)] = parseFloat(value)
+        
+        if ( parseFloat(tracker[date][activity].weeks[week(today)]) < 
+            parseFloat(tracker["max"][activity].value || Infinity) ) {
+          tracker["max"][activity].value = parseFloat(value)
+          tracker["max"][activity].week = week(today)
+        }
+        
         break
       default:
         tracker[date][activity].current = tracker[date][activity].items.reduce(
@@ -79,6 +87,14 @@ const addEntry = (date, activity, value) => {
         )
         tracker[date][activity].weeks[week(today)] =
           (tracker[date][activity].weeks[week(today)] || 0) + parseFloat(value)
+        if ( parseFloat(tracker[date][activity].weeks[week(today)]) > 
+            parseFloat(tracker["max"][activity]?.value || 0) ) {
+	
+          tracker["max"][activity] = {
+						week: week(today),
+						value: parseFloat(tracker[date][activity].weeks[week(today)])
+					}
+        }
         break
     }
 
@@ -96,16 +112,20 @@ const addEntry = (date, activity, value) => {
     let data = JSON.stringify(tracker)
     fs.writeFileSync('tracker.json', data)
     console.log(tracker[date][activity])
-  }
+    console.log(JSON.stringify({max: tracker["max"][activity]}, null, 2))
+}
 }
 
 const main = () => {
+
   const activity = process.argv[2]
   const value = parseFloat(eval(process.argv[3]))
 
   const Dates = Object.keys(targets)
+	console.log(Dates)
+	const now = new Date(formatDate())
   Dates.forEach((date) => {
-    if (new Date(date) - new Date() > 0) {
+    if ( new Date(date) - now >= 0) {
       if (process.argv.length == 2) {
         displayStatus(date)
       } else {
