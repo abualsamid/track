@@ -104,5 +104,40 @@
       "target": 42000,
       "mode": "sum"
     }
+  },
+
+  "2021-12-31": {
+    "weight": {
+      "target": 176,
+      "mode": "target"
+    },
+    "miles": {
+      "target": 440,
+      "mode": "sum"
+    },
+    "situps": {
+      "target": 1400,
+      "mode": "sum"
+    },
+    "pushups": {
+      "target": 1200,
+      "mode": "sum"
+    },
+    "press": {
+      "target": 60000,
+      "mode": "sum"
+    },
+    "curl": {
+      "target": 42000,
+      "mode": "sum"
+    },
+    "shoulders": {
+      "target": 42000,
+      "mode": "sum"
+    },
+    "lats": {
+      "target": 42000,
+      "mode": "sum"
+    }
   }
 }
