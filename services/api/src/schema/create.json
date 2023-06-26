@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "track",
+  "required": [
+    "name",
+    "value"
+  ],
+  "properties": {
+    "$ref": "#/definitions/track"
+  }
+  
+}
